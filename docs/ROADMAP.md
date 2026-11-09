@@ -2,15 +2,15 @@
 
 ## Target environment
 
-- PS4 firmware: 13.02 (user-reported).
-- GoldHEN: use the newest compatible release available for the console. As of 2026-11-09, the surfaced latest beta is v2.4b18.13; v2.4b18.12 added 13.02/13.04/13.50 support, and v2.4b18.13 adds 14.00 while retaining earlier targets. Verify the actual version in GoldHEN settings before testing.
-- Target Android: Motorola Moto G15 Power (XT2521-5 / lamu), LineageOS 24.
+- PS4 firmware: 13.52 (user clarification).
+- GoldHEN: latest surfaced beta as of 2026-11-09 is v2.4b18.13. The changelog history attributes 13.52 support to v2.4b18.11, 13.02/13.04/13.50 to v2.4b18.12, and 14.00 to v2.4b18.13. Verify the exact installed payload on-console.
+- Target Android: Motorola Moto G15 Power (XT2521-5 / lamu), LineageOS 24 / Android 16.
 
 ## Milestones
 
-1. [x] Record target hardware and firmware from user-provided context.
-2. [x] Correct the GoldHEN target notes to the current beta line.
-3. [ ] Select and document a PS4 homebrew SDK/toolchain compatible with the target firmware.
+1. [x] Record target hardware and corrected PS4 firmware 13.52.
+2. [x] Record the latest surfaced GoldHEN beta line.
+3. [ ] Select and document a PS4 homebrew SDK/toolchain compatible with firmware 13.52.
 4. [ ] Verify USB host enumeration, interface claiming and bulk endpoint transfers on the actual PS4.
 5. [ ] Implement read-only USB discovery (VID/PID and descriptors).
 6. [ ] Implement Fastboot handshake and read-only getvar:product, getvar:version, and getvar:current-slot.
@@ -26,4 +26,4 @@
 
 ## Blocking unknown
 
-GoldHEN being active does not by itself prove that the PS4 homebrew SDK exposes the USB host APIs needed for an Android Fastboot connection. Do not add guessed libusb calls or claim the console can flash until this is demonstrated on hardware.
+GoldHEN being active does not by itself prove that a PS4 homebrew SDK exposes USB host APIs needed for Android Fastboot. Do not add guessed libusb calls or claim the console can flash until this is demonstrated on hardware.
