@@ -6,16 +6,16 @@ Experimental PS4 homebrew research project to test whether a jailbroken PS4 can 
 
 ## Target setup
 
-- Console: PS4, firmware 13.02 (user-reported)
-- Homebrew environment: GoldHEN; latest surfaced beta as of 2026-11-09 is v2.4b18.13. The v2.4b18.12 changelog added firmware 13.02/13.04/13.50; v2.4b18.13 adds 14.00 while retaining earlier supported targets. Confirm the exact payload shown on the console before testing.
-- Android device: Motorola Moto G15 Power, XT2521-5 (lamu)
-- Android OS: LineageOS 24 / Android 16 (user-reported)
+- Console: PS4, firmware 13.52 (user clarification).
+- Homebrew: GoldHEN v2.4b18.13 is the latest surfaced beta as of 2026-11-09. The beta changelog line introduced 13.52 support in v2.4b18.11 and later added 13.02/13.04/13.50 in v2.4b18.12; v2.4b18.13 adds 14.00. Confirm the actual payload version on-console.
+- Android device: Motorola Moto G15 Power, XT2521-5 (lamu).
+- Android OS: LineageOS 24 / Android 16 (user-reported).
 
 ## What exists
 
-- Fastboot protocol framing/parsing scaffold.
+- Fastboot command validation and response parsing.
 - A transport abstraction.
-- Host-side protocol tests and CI.
+- Host-side protocol tests and GitHub Actions CI.
 - A placeholder PS4 USB transport file.
 
 ## What does NOT exist yet
@@ -28,11 +28,11 @@ Experimental PS4 homebrew research project to test whether a jailbroken PS4 can 
 ## Development plan
 
 1. Confirm the exact PS4 firmware and GoldHEN payload version on-device.
-2. Identify a PS4 SDK/toolchain that supports the target environment.
+2. Identify a PS4 SDK/toolchain that supports firmware 13.52.
 3. Prove USB host enumeration and bulk endpoints independently of Fastboot.
 4. Add read-only Fastboot handshake and getvar requests.
 5. Test with the Moto G15 Power without issuing write/erase commands.
-6. Consider flashing only after device identity, partition map, slot, image size and rollback/recovery paths are independently verified.
+6. Consider flashing only after device identity, partition map, slot, image size and recovery paths are independently verified.
 
 ## Safety
 
@@ -44,4 +44,4 @@ This project must remain read-only until USB communication and device identifica
     cmake --build build
     ctest --test-dir build --output-on-failure
 
-These commands build the portable protocol tests on a normal development host. They do not create a PS4 PKG. A real PS4 package requires a compatible PS4 homebrew SDK/toolchain and a verified USB host API.
+These commands build portable protocol tests on a normal development host. They do not create a PS4 PKG. A real PS4 package requires a compatible PS4 homebrew SDK/toolchain and a verified USB host API.
